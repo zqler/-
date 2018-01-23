@@ -1,0 +1,99 @@
+.header {
+    background-color: #0078c8;
+    height: 54px;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+@media (min-width: 1366px) {
+    .my-container {
+        width: 1246px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .my-container {
+        width: 1160px;
+    }
+}
+
+.my-container {
+    width: 964px;
+    margin: 0px auto;
+}
+
+.logo {
+    margin-top: 10px;
+    height: 34px;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+.pull-left {
+    float: left;
+}
+
+.user-wrapper {
+    position: relative;
+    z-index: 201;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.user-wrapper dl {
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.my-question {
+    line-height: 54px;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.my-question .box {
+    float: left;
+    margin-right: 20px;
+}
+
+.user-info {
+    line-height: 54px;
+    display: table-cell;
+    position: relative;
+    z-index: 201;
+}
+
+.user-wrapper .user-name {
+    color: #fff;
+    display: inline-block;
+    line-height: 54px;
+}
+
+.user-wrapper dl dt i.icon {
+    margin: -3px 10px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-wrapper dl i.questions-icon {
+    background: url("../../asset/images/home24.png") no-repeat center;
+    width: 20px;
+    height: 20px;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0px;
+}
