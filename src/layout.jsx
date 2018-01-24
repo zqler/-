@@ -24,7 +24,6 @@ class Layout extends React.Component {
       return (
         <div className="mainBox">
           <div className="bodyBox">
-             
             <div>{this.props.children}</div>
           </div>
         </div>
