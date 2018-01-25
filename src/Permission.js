@@ -1,0 +1,19 @@
+import React from 'react';
+import Login from "../app/login/login.jsx";
+import { storage } from './localStorage';
+const session = storage(sessionStorage);
+
+export function setLoginStatus(flag = 0){
+  session.setItem('login', flag);
+}
+export default  Component => {
+   return class Permission extends React.Component{
+     render(){
+       if (session.getItem('login') == 1){
+         return React.createElement(Component, { ...this.props });
+       }
+       return React.createElement(Login, { ...this.props });
+     }
+   }
+
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../app/header/header.jsx";   
+import Permission from '../../src/Permission';
 import "./home.scss";
 
 class Home extends React.Component {
@@ -25,7 +26,7 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Permission(Home);
 
 
 

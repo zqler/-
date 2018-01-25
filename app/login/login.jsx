@@ -6,6 +6,7 @@ import Api from "../../api/api.jsx";
 import Util from "../../components/util/util.jsx";
 import Cookie from "../../components/cookie/cookie.jsx";
 import "./login.scss";
+import {setLoginStatus} from '../../src/Permission';
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -75,7 +76,10 @@ class Login extends React.Component{
                 if(isRemberPed){
                     this.rememberPwd();
                 }
-                this.props.goLogin()
+
+                setLoginStatus(1);
+                const { history } = this.props;
+                history.replace('/');
             },
             error:(data)=>{
                 this.showTips(data.errorMsg);
