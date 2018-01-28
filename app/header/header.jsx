@@ -1,5 +1,6 @@
 import  React from "react";
-import { withRouter } from "react-router";
+import { withRouter,Link } from "react-router-dom";
+import {setLoginOut} from '../../src/Permission';
 import "./header.scss";
 class Header extends React.Component {
   constructor(props) {
@@ -9,11 +10,12 @@ class Header extends React.Component {
   handleLogout(){
     const { history } = this.props;
     // 
+    setLoginOut(); 
     history.push('/login');
   }
   render() {
-    let { title, url } = this.props;
-    if (!title && url) return null;
+    let { title, url,name,user} = this.props;
+    if (!title && url && name &&user) return null;
     return <div className="header">
         <div className="my-container clearfix">
           <div className="logo pull-left">
@@ -24,12 +26,14 @@ class Header extends React.Component {
           <div className="user-wrapper pull-right" id="userbutton">
             <dl className="my-question pull-left">
               <dt className="box user-info">
-                <a className="user-name" href={url}>
+               
+                <Link to={url} className="user-name">
                   <i className="icon questions-icon">
                     <em />
                   </i>
-                  <span id="ctl01_spanMyq">我的问卷</span>
-                </a>
+                  <span id="ctl01_spanMyq">{name}</span>
+                  </Link>
+              
               </dt>
               <dd className="line" />
             </dl>
@@ -40,7 +44,7 @@ class Header extends React.Component {
               <dd className="spinner-list">
                 <a href="javascript:void(0)" className="user-name">
                   <span id="ctl01_lblUserName" style={{ textAlign: "center" }}>
-                    15108252197
+                   {user}
                   </span>
                   <span className="caret" />
                 </a>

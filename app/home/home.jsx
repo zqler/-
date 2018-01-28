@@ -17,7 +17,9 @@ class Home extends React.Component {
       <div>
         <Header
           title="乐培生调查问卷"
-          url="http://www.baidu.com"
+          url="/"
+          name="我的问卷"
+          user="张权"
           exit="exit"
           exitLogin={this.exitLogin}
         />
