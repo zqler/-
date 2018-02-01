@@ -1,0 +1,46 @@
+.item {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #e1ebf5;
+    .item-top {
+        font-size: 16px;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 20px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        background-color: #e6f0fa;
+        .title {
+            overflow: hidden;
+            max-width: 270px;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 10px;
+            color: #333333;
+            &:hover {
+                color: #ff5100;
+            }
+        }
+        .item-id {
+            margin-right: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+        .item-date,
+        .item-time {
+            margin-right: 5px;
+            font-size: 14px;
+            color: #808080;
+        }
+    }
+}
+
+.item-bot {
+    height: 58px;
+    padding: 0 20px;
+}
+
+.pull-left {
+    float: left !important;
+}

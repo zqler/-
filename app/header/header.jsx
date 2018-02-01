@@ -1,12 +1,20 @@
 import  React from "react";
 import { withRouter,Link } from "react-router-dom";
 import {setLoginOut} from '../../src/Permission';
+import PropTypes from 'prop-types';
 import "./header.scss";
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
   }
+   static propTypes={
+      data: PropTypes.object,   
+    }
+    static defaultProps = {
+      url:'/',
+      name:'乐培生问卷调查首页',
+    }
   handleLogout(){
     const { history } = this.props;
     // 
@@ -14,7 +22,7 @@ class Header extends React.Component {
     history.push('/login');
   }
   render() {
-    let { title, url,name,user} = this.props;
+    let { title, url,name,user} = this.props.data;
     if (!title && url && name &&user) return null;
     return <div className="header">
         <div className="my-container clearfix">
