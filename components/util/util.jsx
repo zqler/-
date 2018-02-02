@@ -57,7 +57,7 @@ module.exports = {
                     return false
                 }
                 else {
-                    payload.success(data.result)
+                    payload.success(data)
                 }
             }).catch((error)=>{
                 if(payload.catchCbk){

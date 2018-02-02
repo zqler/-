@@ -16,7 +16,7 @@ class Home extends React.Component {
         name: "我的问卷",
         user: 15108252197
       },
-      listData: []
+      List: []
     };
 
     this.exitLogin = this.exitLogin.bind(this);
@@ -39,29 +39,25 @@ class Home extends React.Component {
     Util.fetchHandler({
       url: Api.getLisData,
       type: "get",
-      success: data => {
-        this.setState={
-           listData: data
-        }
-      },
+      success: (data) => {
+        setTimeout(() => {
+          this.setState({
+            List: data.list,
+            loading: false
+          });
+        }, 500);
+      }, 
       error: data => {
         this.showTips(data.errorMsg);
       }
     });
   }
   render() {
-
+       let {List,loading,header} = this.state;
     return (
       <div>
-        <Header data={this.state.header} exitLogin={this.exitLogin} />
-        <div className="list">
-          {this.state.listData.map((data) =>(
-              <Item data={data} key={data.id} />
-          ))
-            
-          }
-         
-        </div>
+        <Header data={header} exitLogin={this.exitLogin} />    
+              <Item data={List} loading = {loading}/>       
       </div>
     );
   }
