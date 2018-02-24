@@ -18,7 +18,7 @@ class Routers extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route path='/details' component={Details}/>
+          <Route exact path="/:id" component={Details}/>
           >
         </Switch>
       

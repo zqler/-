@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, hashHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import './item.scss';
 class Item extends React.Component {
@@ -19,20 +19,16 @@ class Item extends React.Component {
   };
   render() {
     let { data,loading } = this.props;
-    console.log(data);
     return (
         <div className="list">
         {
        
       data.map((item, i) => {
-             const path = { 
-               pathName: "/details",
-               query:item.id
-               };
+           const id = item.code;
             return <dl className="item" key={i}>
                 <dt className="item-top">
                   <div className="pull-left">
-                    <Link to={path} className="title pull-left">
+                    <Link to={`/${item.code}`} className="title pull-left">
                       {item.name}
                     </Link>
                     <div className="pull-left item-id">
