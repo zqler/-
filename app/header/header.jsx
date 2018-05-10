@@ -6,15 +6,28 @@ import "./header.scss";
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      addVisible: false
+    };
     this.handleLogout = this.handleLogout.bind(this);
   }
    static propTypes={
-      data: PropTypes.object,   
-    }
+      data: PropTypes.object,
+    };
     static defaultProps = {
       url:'/',
       name:'乐培生问卷调查首页',
-    }
+    };
+  personInfo=()=>{
+     this.setState({
+       addVisible:true
+     })
+  }
+  cancleInfo =()=>{
+    this.setState({
+       addVisible:false
+    })
+  }
   handleLogout(){
     const { history } = this.props;
     // 
@@ -23,6 +36,7 @@ class Header extends React.Component {
   }
   render() {
     let { title, url,name,user} = this.props.data;
+    const {addVisible} = this.state;
     if (!title && url && name &&user) return null;
     return <div className="header">
         <div className="my-container clearfix">
@@ -35,7 +49,7 @@ class Header extends React.Component {
             <dl className="my-question pull-left">
               <dt className="box user-info">
                
-                <Link to={url} className="user-name">
+                <Link to={url} className="user-name" >
                   <i className="icon questions-icon">
                     <em />
                   </i>
@@ -50,12 +64,18 @@ class Header extends React.Component {
                 <em />
               </dt>
               <dd className="spinner-list">
-                <a href="javascript:void(0)" className="user-name">
+                <a href="javascript:void(0)" className="user-name" onClick={this.personInfo}>
                   <span id="ctl01_lblUserName" style={{ textAlign: "center" }}>
                    {user}
                   </span>
                   <span className="caret" />
                 </a>
+                {addVisible?
+                <div>
+                   <p onClick={this.cancleInfo} >弹出框</p>
+                </div>:null
+
+                }
               </dd>
             </dl>
             <dl id="ctl01_hrefWjxout" className="user-info pull-left IE-8">
