@@ -4,7 +4,7 @@ import Item from "../../components/item/item.jsx";
 import Permission from "../../src/Permission";
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { actions, increaseAction } from './../../redux/action';
+import * as DispatchAction  from './../../redux/action';
 import PropTypes from "prop-types";
 import Api from "../../api/api.jsx";
 import Util from "../../components/util/util.jsx";
@@ -58,13 +58,21 @@ class Home extends React.Component {
       }
     });
   }
+  onIncreaseClick=()=>{
+        this.props.increaseAction();
+  }
+   onDecrementClick=()=>{
+        this.props.decrementAction();
+  }
   render() {
     let { List, loading, header } = this.state;
-    const { value, onIncreaseClick } = this.props;
+    const { value} = this.props;
     return (
       <div>
+        
+        <button onClick={this.onDecrementClick }>Increase</button>
         <span>{value}</span>
-        <button onClick={onIncreaseClick }>Increase</button>
+        <button onClick={this.onIncreaseClick }>Increase</button>
         <Header data={header} exitLogin={this.exitLogin} />
         {loading ? <div>加载中。。。</div> : <Item data={List} />}
       </div>
@@ -75,14 +83,15 @@ class Home extends React.Component {
 // export default Permission(Home);
 Home.propTypes = {
   value: PropTypes.number.isRequired,
-  onIncreaseClick: PropTypes.func.isRequired
+  increaseAction: PropTypes.func.isRequired,
+  decrementAction:PropTypes.func.isRequired
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onIncreaseClick: () => dispatch(increaseAction)
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     onIncreaseClick: () => dispatch(increaseAction)
+//   }
+// }
 
 // Action Creator
 // const increaseAction = { type: 'increase' }
@@ -91,8 +100,10 @@ export default connect(
   (state)=>{
     const value= state.count;
     return {value}
-  },
-
-  mapDispatchToProps
-  // (dispatch:Dispatch)=>bindActionCreators(increaseAction,dispatch),
+   },
+  //  {
+  //   increaseAction
+  // }
+ 
+    (dispatch:Dispatch)=>bindActionCreators(DispatchAction,dispatch),
 )( Permission(Home));
